@@ -7,5 +7,6 @@ public interface IService<T> {
     T findById(int id);
     List findAll();
     void delete(int id);
+    void update(T t);
 
 }
