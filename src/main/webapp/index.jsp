@@ -121,10 +121,10 @@
           </div>
           <div class="mainmenu pull-left">
             <ul class="nav navbar-nav collapse navbar-collapse">
-              <li><a href="/products" class="active">Home</a></li>
+              <li><a href="/home" class="active">Home</a></li>
               <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                  <li><a href="/products?action=show">Products</a></li>
+                  <li><a href="/home?action=show">Products</a></li>
                   <li><a href="save/product-details.html">Product Details</a></li>
                   <li><a href="save/checkout.html">Checkout</a></li>
                   <li><a href="save/cart.html">Cart</a></li>
