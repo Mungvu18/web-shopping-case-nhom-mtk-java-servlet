@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +75,7 @@
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="save/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="save/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="account?action=login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/account?action=login"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -128,39 +127,35 @@
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
-<section id="cart_items">
+
+<section id="form"><!--form-->
     <div class="container">
-        <div class="table-responsive cart_info">
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <td>id</td>
-                    <td>username</td>
-                    <td>password</td>
-                    <td>role</td>
-                    <td>Update Information</td>
-                    <td>Delete Account</td>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${accountList}" var="account">
-                    <tr>
-                        <td>${account.getId()}</td>
-                        <td>${account.getUsername()}</td>
-                        <td>${account.getPassword()}</td>
-                        <td>${account.getRole()}</td>
-                        <td><a type="button" href="/product?action=update&id=${account.getId()}" >Update</a></td>
-                        <td><a type="button" href="/product?action=delete&id=${account.getId()}" >Delete</a></td>
-                    </tr>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="login-form"><!--login form-->
+                    <h2>Login to your account</h2>
+                    <form action="#" method="post">
+                        <input name="username" type="text" placeholder="Username" />
+                        <input name= "password" type="password" placeholder="Password" />
+                        <p style="color: red" id="warming"></p>
+                        <span>
+								<input type="checkbox" class="checkbox">
+								Keep me signed in
+							</span>
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                    <script>
+                        let loginFailsChecker = ${loginFails}
+                        if (loginFailsChecker==true){
+                            document.getElementById('warming').innerHTML="username or password was wrong"
+                        }
+                    </script>
+                </div><!--/login form-->
 
-                </c:forEach>
-                </tbody>
-            </table>
-
+            </div>
         </div>
     </div>
-</section> <!--/#table-->
-
+</section><!--/form-->
 
 
 <footer id="footer"><!--Footer-->
