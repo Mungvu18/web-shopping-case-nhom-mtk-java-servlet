@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xuant
-  Date: 2/21/2021
-  Time: 2:18 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -72,11 +65,11 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> ${account.getUsername()} <p id="account"></p></a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> ${account.getUsername()}</a></li>
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="save/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="save/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="/account?action=login"><i class="fa fa-lock"></i><p id="login"></p> Sign out</a></li>
+                            <li><a href="/account?action=login"><i class="fa fa-lock"></i> Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -282,46 +275,48 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
-                    <c:forEach items="${productList}" var="product">
-                        <div class="col-sm-4" style=" padding-top: 10px">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="${product.getImage()}" alt=""/>
-                                        <h2>${product.getPrice()}</h2>
-                                        <p>${product.getName()}</p>
-
-                                        <a href="#" class="btn btn-default add-to-cart">
-                                            <i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>${product.getPrice()}</h2>
-                                            <p>${product.getDescription()}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="images/home/product1.jpg" alt="" />
+                                    <p>Product Manager</p>
+                                    <a href="/product?action=show" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <p>Product Manager</p>
+                                        <a href="/product?action=show" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
                                     </div>
                                 </div>
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                    </ul>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="images/home/product2.jpg" alt="" />
+                                    <p>Account manager</p>
+                                    <a href="/account?action=showAccountList" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <p>Account manager</p>
+                                        <a href="/account?action=showAccountList" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                    </c:forEach>
-
+                    </div>
 
                 </div><!--features_items-->
-                <ul class="pagination" style="padding-top: 50px">
-                    <li class="active"><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">&raquo;</a></li>
-                </ul>
 
             </div>
         </div>

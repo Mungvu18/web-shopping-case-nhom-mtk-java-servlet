@@ -1,33 +1,61 @@
 package controller;
 
 
+import model.Account;
 import model.Product;
+import service.AccountService;
 import service.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", urlPatterns = "/products")
+@WebServlet(name = "ProductServlet", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
     ProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String action = request.getParameter("action");
         if (action == null) {
-            action = "home";
+            action = "product";
         }
 
         switch (action) {
             case "show":
                 showAllProduct(request, response);
                 break;
-            case "home":
+            case "product":
                 showHome(request, response);
+                break;
+            case "search":
+                finByName(request,response);
+                break;
+
         }
+    }
+
+    private void finByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        List<Product> AllProduct = productService.findAll();
+        List<Product> productList = new ArrayList<>();
+
+        for( Product product : AllProduct){
+
+            if (product.getName().contains(name)){
+                productList.add(product);
+            }
+
+        }
+        request.setAttribute("productList",productList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("shop.jsp");
+        requestDispatcher.forward(request,response);
+
     }
 
 
@@ -48,6 +76,16 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
 
+        switch (action) {
+
+        }
     }
+
+
 }
+
