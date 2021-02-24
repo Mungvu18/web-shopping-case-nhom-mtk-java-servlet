@@ -66,17 +66,47 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/product"><img width="100" height="40" src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png" alt="" /></a>
+                        <a href="/"><img width="100" height="40"
+                                         src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png"
+                                         alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>
+                                <span id="usernameShowOnTop">
+                                    <c:if test="${account == null}">
+                                        Account
+                                    </c:if>
+                                    <c:if test="${account != null}">
+                                        ${account.getUsername()}
+                                    </c:if>
+                                    </span></a></li>
+
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="save/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="save/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="save/login.html"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="
+                                <c:if test="${account == null}">
+                                /account?action=login
+                                </c:if>
+                                <c:if test="${account != null}">
+                                /account?action=logout
+                                </c:if>
+
+                                ">
+
+
+                                <i class="fa fa-lock"></i>
+                                <c:if test="${account == null}">
+                                    Login
+                                </c:if>
+                                <c:if test="${account != null}">
+                                    Logout
+                                </c:if>
+                            </a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -142,10 +172,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr> <td>${account.getId()}</td>
-                        <td><input type="text" name="username" value="${account.getUsername()}"></td>
-                        <td><input type="text" name = "password" value="${account.getPassword()}"></td>
-                        <td><input type="text" name = "role" value="${account.getRole()}"></td>
+                    <tr> <td>${account_update.getId()}</td>
+                        <td><input type="text" name="username" value="${account_update.getUsername()}"></td>
+                        <td><input type="text" name = "password" value="${account_update.getPassword()}"></td>
+                        <td><input type="text" name = "role" value="${account_update.getRole()}"></td>
                         <td><input type="submit" value="Update"></td>
                     </tr>
                     </tbody>

@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/product"><img width="100" height="40" src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png" alt="" /></a>
+                        <a href="/"><img width="100" height="40" src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/product" class="active">Home</a></li>
+                            <li><a href="/" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/product?action=show">Products</a></li>
@@ -142,7 +142,8 @@
 								<input type="checkbox" class="checkbox">
 								Keep me signed in
 							</span>
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-default">Login</button> <br>
+                        <a  href="/account?action=newUserAccount" class="btn btn-default" style=" color: whitesmoke; background-color: #f5bd25 ">Sign Up</a>
                     </form>
                     <script>
                         let loginFailsChecker = ${loginFails}

@@ -59,30 +59,61 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/product"><img width="100" height="40" src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png" alt="" /></a>
+                        <a href="/"><img width="100" height="40"
+                                         src="https://i.pinimg.com/originals/05/7b/27/057b274c134bcf92ac151758478949b3.png"
+                                         alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> ${account.getUsername()}</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>
+                                <span id="usernameShowOnTop">
+                                    <c:if test="${account == null}">
+                                        Account
+                                    </c:if>
+                                    <c:if test="${account != null}">
+                                        ${account.getUsername()}
+                                    </c:if>
+                                    </span></a></li>
+
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="save/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="save/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="/account?action=login"><i class="fa fa-lock"></i> Sign out</a></li>
+                            <li><a href="
+                                <c:if test="${account == null}">
+                                /account?action=login
+                                </c:if>
+                                <c:if test="${account != null}">
+                                /account?action=logout
+                                </c:if>
+
+                                ">
+
+
+                                <i class="fa fa-lock"></i>
+                                <c:if test="${account == null}">
+                                    Login
+                                </c:if>
+                                <c:if test="${account != null}">
+                                    Logout
+                                </c:if>
+                            </a></li>
+
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/header-middle-->
-
+    <!-- Button trigger modal -->
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -91,7 +122,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/product" class="active">Home</a></li>
+                            <li><a href="/" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/product?action=show">Products</a></li>
@@ -105,13 +136,14 @@
                             </li>
                             <li><a href="#">404</a></li>
                             <li><a href="#">Contact</a></li>
+                            <li><a href="/account?action=newAdminAccount">Create New Account</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <form action="/product" class="searchform" method="get">
                         <input type="text" placeholder="Search" name="name"/>
-                        <input name="action" value="search" hidden >
+                        <input name="action" value="search" hidden>
                         <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i>
                         </button>
                     </form>
@@ -140,18 +172,17 @@
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
                                         <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Sportswear
+                                        Find By Brand
                                     </a>
                                 </h4>
                             </div>
                             <div id="sportswear" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="">Nike </a></li>
-                                        <li><a href="">Under Armour </a></li>
-                                        <li><a href="">Adidas </a></li>
-                                        <li><a href="">Puma</a></li>
-                                        <li><a href="">ASICS </a></li>
+                                        <li><a href="/product?action=findByBrand&brand=Nike">Nike </a></li>
+                                        <li><a href="/product?action=findByBrand&brand=Bata">Bata </a></li>
+                                        <li><a href="/product?action=findByBrand&brand=Adidas">Adidas </a></li>
+                                        <li><a href="/product?action=findByBrand&brand=Puma">Puma</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -234,19 +265,16 @@
                                 <h4 class="panel-title"><a href="#">Bags</a></h4>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                            </div>
-                        </div>
                     </div><!--/category-productsr-->
 
                     <div class="brands_products"><!--brands_products-->
                         <h2>Brands</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
-                                <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+                                <li><a href="/product?action=sortByPriceLowToHigh"> <span class="pull-right">(50)</span>Sort
+                                    By Price(Low To High)</a></li>
+                                <li><a href="/product?action=sortByPriceHighToLow"> <span class="pull-right">(56)</span>Sort
+                                    By Price( High To Low)</a></li>
                                 <li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
                                 <li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
                                 <li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
@@ -279,21 +307,21 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/product1.jpg" alt="" />
+                                    <img src="images/home/product1.jpg" alt=""/>
                                     <p>Product Manager</p>
-                                    <a href="/product?action=show" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                    <a href="/product?action=show" class="btn btn-default add-to-cart"><i
+                                            class="fa fa-shopping-cart"></i>Go</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <p>Product Manager</p>
-                                        <a href="/product?action=show" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                        <a href="/product?action=show" class="btn btn-default add-to-cart"><i
+                                                class="fa fa-shopping-cart"></i>Go</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -302,14 +330,16 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/product2.jpg" alt="" />
+                                    <img src="images/home/product2.jpg" alt=""/>
                                     <p>Account manager</p>
-                                    <a href="/account?action=showAccountList" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                    <a href="/account?action=showAccountList&&id=${account.getId()}"
+                                       class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <p>Account manager</p>
-                                        <a href="/account?action=showAccountList" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
+                                        <a href="/account?action=showAccountList&&id=${account.getId()}"
+                                           class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Go</a>
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +368,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe1.png" alt="" />
+                                    <img src="images/home/iframe1.png" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -353,7 +383,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe2.png" alt="" />
+                                    <img src="images/home/iframe2.png" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -368,7 +398,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe3.png" alt="" />
+                                    <img src="images/home/iframe3.png" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -383,7 +413,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe4.png" alt="" />
+                                    <img src="images/home/iframe4.png" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -396,8 +426,8 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="address">
-                        <img src="images/home/map.png" alt="" />
-                        <p>Moon City HaNoi VietNam  </p>
+                        <img src="images/home/map.png" alt=""/>
+                        <p>Moon City HaNoi VietNam </p>
                     </div>
                 </div>
             </div>
@@ -459,9 +489,10 @@
                     <div class="single-widget">
                         <h2>About Shopper</h2>
                         <form action="#" class="searchform">
-                            <input type="text" placeholder="Your email address" />
-                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                            <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                            <input type="text" placeholder="Your email address"/>
+                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i>
+                            </button>
+                            <p>Get the most recent updates from <br/>our site and be updated your self...</p>
                         </form>
                     </div>
                 </div>
@@ -474,13 +505,13 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © 2013 MTK-SHOP Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">MTK</a></span></p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">MTK</a></span>
+                </p>
             </div>
         </div>
     </div>
 
 </footer><!--/Footer-->
-
 
 
 <script src="js/jquery.js"></script>
